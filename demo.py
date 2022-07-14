@@ -14,15 +14,14 @@
 #
 # Contact: ps-license@tuebingen.mpg.de
 
-
 import sys
 import os
 import os.path as osp
 from typing import List, Optional
 import functools
-os.environ['PYOPENGL_PLATFORM'] = 'egl'
+# os.environ['PYOPENGL_PLATFORM'] = 'egl'
 
-import resource
+# import resource
 import numpy as np
 from collections import OrderedDict, defaultdict
 from loguru import logger
@@ -53,8 +52,8 @@ from expose.config import cfg
 from expose.config.cmd_parser import set_face_contour
 from expose.utils.plot_utils import HDRenderer
 
-rlimit = resource.getrlimit(resource.RLIMIT_NOFILE)
-resource.setrlimit(resource.RLIMIT_NOFILE, (rlimit[1], rlimit[1]))
+# rlimit = resource.getrlimit(resource.RLIMIT_NOFILE)
+# resource.setrlimit(resource.RLIMIT_NOFILE, (rlimit[1], rlimit[1]))
 
 
 Vec3d = o3d.utility.Vector3dVector
@@ -477,6 +476,18 @@ def main(
 
 
 if __name__ == '__main__':
+
+    sys.argv = [
+        "", 
+        "--exp-cfg=data/conf.yaml",
+        "--show=False",
+        "--output-folder=output",
+        "--save-params=True",
+        "--save-vis=True",
+        "--save-mesh=True",
+        "--image-folder=samples"
+        ]
+
     torch.backends.cudnn.benchmark = True
     torch.backends.cudnn.deterministic = False
 
